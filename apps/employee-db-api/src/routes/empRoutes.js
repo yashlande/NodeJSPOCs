@@ -8,6 +8,8 @@ const router = express.Router();
 //   res.send('Welcome in Home Page');
 // });
 
+//Get Routes Start Here
+
 router.get('/', (req, res) => {
   Employee.find({})
     .then((emp) => {
@@ -29,6 +31,10 @@ router.get('/emp/search', (req, res) => {
     });
 });
 
+//Get Routes End Here
+
+//Post Routes Start Here
+
 router.post('/emp/new', (req, res) => {
   let emp = {
     name: req.body.name,
@@ -43,5 +49,52 @@ router.post('/emp/new', (req, res) => {
       console.log('Post Api Error=', error);
     });
 });
+
+//Post Routes End Here
+
+//Put Routes Start Here
+
+router.put('/empUpdate/:id', (req, res) => {
+  let updateId = { _id: req.params.id };
+
+  Employee.updateOne(updateId, {
+    $set: {
+      name: req.body.name,
+      role: req.body.role,
+      salary: req.body.salary,
+    },
+  })
+    .then((emp) => {
+      Employee.findOne(updateId)
+        .then((emp) => {
+          res.send({ emp: emp });
+        })
+        .catch((error) => {
+          res.send({ error: error });
+        });
+    })
+    .catch((error) => {
+      res.send({ error: error });
+    });
+});
+
+//Put Routes End Here
+
+//Delete Routes Start Here
+
+router.delete('/empDelete/:id', (req, res) => {
+  let deleteId = { _id: req.params.id };
+  Employee.deleteOne(deleteId).then((emp) => {
+    Employee.find({})
+      .then((emp) => {
+        res.send({ emp: emp });
+      })
+      .catch((error) => {
+        res.send({ error: error });
+      });
+  });
+});
+
+//Delete Routes End Here
 
 module.exports = router;

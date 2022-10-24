@@ -1,0 +1,152 @@
+{
+	"info": {
+		"_postman_id": "3882cf84-561a-4f87-9755-e38d6b555ba8",
+		"name": "EmployeeDB-NodePOC",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12338095"
+	},
+	"item": [
+		{
+			"name": "http://localhost:3000/emp/new",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Abhijit\",\r\n    \"role\":\"Jr. Software Developer\",\r\n    \"salary\": 10000\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/emp/new",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"emp",
+						"new"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/emp/search",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Yashwant\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/emp/search",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"emp",
+						"search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000//empUpdate/63553bf2e0ec881eafb434fc",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3000/empDelete/635650b411b61663dce9b7b3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"empDelete",
+						"635650b411b61663dce9b7b3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/empUpdate/63553d4fac4358f47c47efa4",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Yashwant Lande\",\r\n    \"role\": \"Sr. Software Developer\",\r\n    \"salary\": 110000\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/empUpdate/63553bf2e0ec881eafb434fc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"empUpdate",
+						"63553bf2e0ec881eafb434fc"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
