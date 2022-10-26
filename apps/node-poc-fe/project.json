@@ -1,0 +1,84 @@
+{
+  "name": "node-poc-fe",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/node-poc-fe/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/node-poc-fe",
+        "index": "apps/node-poc-fe/src/index.html",
+        "baseHref": "/",
+        "main": "apps/node-poc-fe/src/main.tsx",
+        "polyfills": "apps/node-poc-fe/src/polyfills.ts",
+        "tsConfig": "apps/node-poc-fe/tsconfig.app.json",
+        "assets": [
+          "apps/node-poc-fe/src/favicon.ico",
+          "apps/node-poc-fe/src/assets"
+        ],
+        "styles": ["apps/node-poc-fe/src/styles.css"],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/node-poc-fe/src/environments/environment.ts",
+              "with": "apps/node-poc-fe/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/webpack:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "node-poc-fe:build",
+        "hmr": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "node-poc-fe:build:development"
+        },
+        "production": {
+          "buildTarget": "node-poc-fe:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/node-poc-fe/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/node-poc-fe"],
+      "options": {
+        "jestConfig": "apps/node-poc-fe/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
