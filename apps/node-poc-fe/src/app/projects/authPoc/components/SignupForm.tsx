@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import { Box, Typography, TextField, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
-function LoginForm() {
+function SignupForm() {
   const nevigate=useNavigate();
-  const [loginForm, setLoginForm] = useState({ userName: '', pwd: '' });
+  const [signupForm, setSignupForm] = useState({ userName: '',email:'', pwd: '' });
 
   const handleFormChange = (e: any) => {
-    setLoginForm({ ...loginForm, [e.target.name]: e.target.value });
+    setSignupForm({ ...signupForm, [e.target.name]: e.target.value });
   };
+
   return (
     <Box
       sx={{
@@ -21,14 +22,23 @@ function LoginForm() {
       }}
     >
       <Typography sx={{ color: 'black' }} variant="h6">
-        Login
+        Register
       </Typography>
       <TextField
         fullWidth
         name="userName"
         id="login"
         label="Email Address"
-        value={loginForm.userName}
+        value={signupForm.userName}
+        onChange={handleFormChange}
+        size="small"
+      />
+      <TextField
+        fullWidth
+        name="email"
+        id="mail"
+        label="Enter Email"
+        value={signupForm.email}
         onChange={handleFormChange}
         size="small"
       />
@@ -37,31 +47,27 @@ function LoginForm() {
         name="pwd"
         id="password"
         label="Password"
-        value={loginForm.pwd}
+        value={signupForm.pwd}
         onChange={handleFormChange}
         size="small"
       />
+      <Button variant="contained" color="primary" fullWidth>
+        Register
+      </Button>
       <Box
         sx={{
           display: 'flex',
-          justifyContent: 'flex-end',
+          justifyContent: 'flex-start',
           alignItems: 'center',
           width: '100%',
         }}
       >
-        <Typography sx={{ color: 'red', cursor: 'pointer' }}>
-          Forgot Password?
+        <Typography sx={{ color: 'blue', cursor: 'pointer' }} onClick={()=>nevigate('/auth/login')}>
+          Back to Login
         </Typography>
       </Box>
-      <Button variant="contained" color="primary" fullWidth>
-        Login
-      </Button>
-      <Typography> OR </Typography>
-      <Button variant="contained" color="secondary" fullWidth onClick={()=>nevigate('/auth/signup')}>
-        Sign Up
-      </Button>
     </Box>
   );
 }
 
-export default LoginForm;
+export default SignupForm;

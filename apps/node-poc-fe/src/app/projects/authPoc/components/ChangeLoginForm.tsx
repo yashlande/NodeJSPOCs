@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { Box, Typography, TextField, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
-function LoginForm() {
+function ChangeLoginForm() {
   const nevigate=useNavigate();
-  const [loginForm, setLoginForm] = useState({ userName: '', pwd: '' });
+  const [loginForm, setLoginForm] = useState({ pwd: '', confirmPwd: '' });
 
   const handleFormChange = (e: any) => {
     setLoginForm({ ...loginForm, [e.target.name]: e.target.value });
@@ -25,43 +25,27 @@ function LoginForm() {
       </Typography>
       <TextField
         fullWidth
-        name="userName"
+        name="pwd"
         id="login"
         label="Email Address"
-        value={loginForm.userName}
+        value={loginForm.pwd}
         onChange={handleFormChange}
         size="small"
       />
       <TextField
         fullWidth
-        name="pwd"
+        name="confirmPwd"
         id="password"
-        label="Password"
-        value={loginForm.pwd}
+        label="Confirm Password"
+        value={loginForm.confirmPwd}
         onChange={handleFormChange}
         size="small"
       />
-      <Box
-        sx={{
-          display: 'flex',
-          justifyContent: 'flex-end',
-          alignItems: 'center',
-          width: '100%',
-        }}
-      >
-        <Typography sx={{ color: 'red', cursor: 'pointer' }}>
-          Forgot Password?
-        </Typography>
-      </Box>
       <Button variant="contained" color="primary" fullWidth>
-        Login
-      </Button>
-      <Typography> OR </Typography>
-      <Button variant="contained" color="secondary" fullWidth onClick={()=>nevigate('/auth/signup')}>
-        Sign Up
+        Change Password
       </Button>
     </Box>
   );
 }
 
-export default LoginForm;
+export default ChangeLoginForm;

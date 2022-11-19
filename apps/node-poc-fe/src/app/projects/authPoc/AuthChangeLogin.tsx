@@ -1,9 +1,9 @@
-import { Box, Typography } from '@mui/material';
+import { Box } from '@mui/material';
 import React from 'react';
+import ChangeLoginForm from './components/ChangeLoginForm';
 import Header from './components/Header';
-import LoginForm from './components/LoginForm';
 
-function AuthDashboard() {
+function AuthChangeLogin() {
   return (
     <Box sx={{ width: '100%', height: '100vh' }}>
       <Header />
@@ -16,10 +16,10 @@ function AuthDashboard() {
           alignItems: 'center',
         }}
       >
-       <Typography variant='h4'>Dashboard</Typography>
+        <ChangeLoginForm />
       </Box>
     </Box>
   );
 }
 
-export default AuthDashboard;
+export default AuthChangeLogin;
